@@ -4755,7 +4755,7 @@ AR,E,2188,361,Pergine Valdarno
 AR,E,2169,349,Pian di Sco
 AR,E,2297,431,Pieve Santo Stefano
 AR,E,2306,437,Poppi
-AR,E,2234,42O,Pratovecchio
+AR,E,2234,420,Pratovecchio
 AR,D,1937,134,San Giovanni Valdarno
 AR,E,2231,330,Sansepolcro
 AR,E,2533,456,Sestino
@@ -4996,7 +4996,7 @@ AN,D,1882,125,Camerata Picena
 AN,D,1823,125,Castel Colonna
 AN,D,2068,261,Castelbellino
 AN,D,1881,199,Castelfidardo
-AN,D,1966,2O6,Castelleone di Suasa
+AN,D,1966,206,Castelleone di Suasa
 AN,E,2113,305,Castelplanio
 AN,E,2148,276,Cerreto d'Esi
 AN,D,1823,22,Chiaravalle
@@ -5157,13 +5157,13 @@ AP,D,1644,4,Porto Sant'Epidio
 AP,D,2007,314,Rapagnano
 AP,E,2218,494,Ripatransone
 AP,D,1989,299,Roccafluvione
-AP,E,21O2,395,Rotella
+AP,E,2102,395,Rotella
 AP,D,1593,6,San Benedetto del Tronto
 AP,D,1875,251,Sant'Elpidio a Mare
 AP,E,2372,626,Santa Vittoria in Matenano
 AP,E,2123,216,Servigliano
 AP,E,2583,806,Smerillo
-AP,D,15O4,176,Spinetoli
+AP,D,1504,176,Spinetoli
 AP,D,1988,224,Torre San Patrizio
 AP,E,2132,421,Venarotta
 VT,E,2299,420,Acquapendente
@@ -5197,7 +5197,7 @@ VT,E,2254,470,Gradoli
 VT,D,1753,187,Graffignano
 VT,E,2249,467,Grotte di Castro
 VT,E,2102,384,Ischia di Castro
-VT,E,2322,5O8,Latera
+VT,E,2322,508,Latera
 VT,E,2203,441,Lubriano
 VT,D,1980,315,Marta
 VT,D,1497,42,Montalto di Castro
@@ -5317,7 +5317,7 @@ RM,D,1786,280,Bracciano
 RM,E,2921,810,Camerata Nuova
 RM,D,1769,270,Campagnano di Roma
 RM,D,1952,378,Canale Monterano
-RM,E,2328,6O2,Canterano
+RM,E,2328,602,Canterano
 RM,D,1747,160,Capena
 RM,E,2927,915,Capranica Prenestina
 RM,D,2063,550,Carpineto Romano
@@ -5412,7 +5412,7 @@ RM,D,2034,408,Subiaco
 RM,D,1580,235,Tivoli
 RM,D,2070,484,Tolfa
 RM,D,1773,174,Torrita Tiberina
-RM,D,16O5,173,Trevignano Romano
+RM,D,1605,173,Trevignano Romano
 RM,E,2705,825,Vallepietra
 RM,E,2920,870,Vallinfreda
 RM,D,1715,303,Valmontone
@@ -5465,7 +5465,7 @@ FR,D,1860,250,Arnara
 FR,E,2123,450,Arpino
 FR,E,2127,490,Atina
 FR,D,1469,178,Ausonia
-FR,D,18O4,369,Belmonte Castello
+FR,D,1804,369,Belmonte Castello
 FR,D,1942,450,Boville Ernica
 FR,E,2138,293,Broccostella
 FR,E,2374,650,Campoli Appennino
@@ -5552,7 +5552,7 @@ AQ,E,2561,695,Avezzano
 AQ,D,1897,340,Balsorano
 AQ,E,2720,800,Barete
 AQ,E,2877,940,Barisciano
-AQ,F,3186,1O60,Barrea
+AQ,F,3186,1060,Barrea
 AQ,F,3454,1210,Bisegna
 AQ,E,2327,580,Bugnara
 AQ,E,2754,851,Cagnano Amiterno
@@ -5583,7 +5583,7 @@ AQ,E,2894,897,Cocullo
 AQ,E,2783,835,Collarmele
 AQ,E,2926,915,Collelongo
 AQ,E,2808,849,Collepietro
-AQ,D,19O8,346,Corfinio
+AQ,D,1908,346,Corfinio
 AQ,E,2479,665,Fagnano Alto
 AQ,E,2484,668,Fontecchio
 AQ,E,2441,644,Fossa
@@ -5640,7 +5640,7 @@ AQ,F,3146,1038,Scontrone
 AQ,E,2756,820,Scoppito
 AQ,E,2570,700,Scurcola Marsicana
 AQ,E,2826,859,Secinaro
-AQ,D,2O38,405,Sulmona
+AQ,D,2038,405,Sulmona
 AQ,E,2613,740,Tagliacozzo
 AQ,E,2328,581,Tione degli Abruzzi
 AQ,E,2774,830,Tornimparte
@@ -5651,7 +5651,7 @@ AQ,E,2953,930,Villalago
 AQ,F,3087,1005,Villavallelonga
 AQ,F,3061,990,Villetta Barrea
 AQ,D,1963,377,Vittorito
-TE,C,12O6,5,Alba Adriatica
+TE,C,1206,5,Alba Adriatica
 TE,D,1797,293,Ancarano
 TE,E,2114,470,Arsita
 TE,D,2068,444,Atri
@@ -5772,7 +5772,7 @@ CH,D,1832,424,Colledimezzo
 CH,D,1554,209,Crecchio
 CH,D,1646,274,Cupello
 CH,D,1864,445,Dogliola
-CH,D,2O59,575,Fallo
+CH,D,2059,575,Fallo
 CH,D,1511,210,Fara Filiorum Petri
 CH,D,1856,440,Fara San Martino
 CH,D,1801,403,Filetto
@@ -5781,7 +5781,7 @@ CH,E,2370,751,Fraine
 CH,D,1830,19,Francavilla al Mare
 CH,D,1783,391,Fresagrandinaria
 CH,D,1596,237,Frisa
-CH,D,2O21,550,Furci
+CH,D,2021,550,Furci
 CH,F,3425,1343,Gamberale
 CH,E,2162,644,Gessopalena
 CH,D,1945,499,Gissi
@@ -5824,7 +5824,7 @@ CH,D,1879,455,Roccascalegna
 CH,E,2353,740,Roccaspinalveti
 CH,E,2449,840,Roio del Sangro
 CH,E,2576,920,Rosello
-CH,D,19O1,470,San Buono
+CH,D,1901,470,San Buono
 CH,D,2062,545,San Giovanni Lipioni
 CH,D,1735,15,San Giovanni Teatino
 CH,D,1826,420,San Martino sulla Marrucina
@@ -5896,7 +5896,7 @@ CB,D,2020,508,Montemitro
 CB,D,1663,273,Montenero di Bisaccia
 CB,E,2207,654,Montorio nei Frentani
 CB,E,2472,839,Morrone del Sannio
-CB,E,24O9,795,Oratino
+CB,E,2409,795,Oratino
 CB,D,2016,520,Palata
 CB,D,1594,225,Petacciato
 CB,E,2185,651,Petrella Tifernina
@@ -6495,7 +6495,7 @@ SA,D,1971,600,Sacco
 SA,D,2033,614,Sala Consilina
 SA,D,1529,420,Salento
 SA,C,994,4,Salerno
-SA,D,2O72,640,Salvitelle
+SA,D,2072,640,Salvitelle
 SA,D,1499,364,San Cipriano Picentino
 SA,D,1607,450,San Giovanni a Piro
 SA,D,1789,475,San Gregorio Magno
