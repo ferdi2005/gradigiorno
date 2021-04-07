@@ -44,7 +44,7 @@ petscan = JSON.parse(File.read("#{__dir__}/lista.txt"))
 puts 'Inizio a processare le pagine...'
 begin
     csv.each do |row|
-        if !row[0].empty? && row[0] != "pr"
+        if !row[0].nil? && row[0] != "" && row[0] != "pr"
             tot += 1
             # stringaricerca = 'intitle:"' + row[4].strip + '" comune italiano'
             # search = wikipedia.query(list: "search", srsearch: stringaricerca, srlimit: 1)

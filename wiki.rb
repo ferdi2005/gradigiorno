@@ -6,7 +6,7 @@ f.map! do |k|
     k = "#{vk},#{k.split(",")[1]},#{k.split(",")[2]}"
 end
 puts f.count
-f.insert(0, "Comune,Zona su Wikipedia,Zona protezione civile")
+f.insert(0, "Comune,Gradi giorno su Wikipedia,Gradi giorno tabella")
 puts f.join("\n")
 puts "\n"
 
@@ -18,5 +18,5 @@ f.map! do |k|
     k = "#{vk},#{k.split(",")[1]}"
 end
 puts f.count
-f.insert(0, "Comune,Zona protezione civile")
+f.insert(0, "Comune,Gradi giorno tabella")
 puts f.join("\n")
