@@ -83,7 +83,7 @@ begin
                             c += 1
                             f.write("#{title},#{match[1]},#{gradigiorno}\n")
                             if active
-                                text.gsub!(/\|\s*Gradi\sgiorno\s*=\s*[\d,]+\n*/i, "|Gradi giorno = #{gradigiorno}\n")
+                                text.gsub!(/\|\s*Gradi\sgiorno\s*=\s*[\d\,\.]+\n*/i, "|Gradi giorno = #{gradigiorno}\n")
                                 wikipedia.edit(title: title, text: text, summary: "Correzione dei gradi giorno (vedi [[Discussioni progetto:Amministrazioni/Comuni italiani#Monitoraggio dei gradi giorno]])", bot: true)
                                 puts "Pagina #{title} aggiornata con successo"
                             end
