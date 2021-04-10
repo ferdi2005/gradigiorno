@@ -76,15 +76,15 @@ begin
                 wikitext = wikipedia.query prop: :revisions, titles: title, rvprop: :content, rvslots: "*"
                 begin
                     text = wikitext.data["pages"].first[1]["revisions"][0]["slots"]["main"]["*"]
-                    if text.match?(/\|\s*Gradi\sgiorno\s*=\s*(\d+)/)
+                    if text.match?(/\|\s*Gradi\sgiorno\s*=\s*(\d+)/i)
                             gradigiorno = row[2]
-                            match = text.match(/\|\s*Gradi\sgiorno\s*=\s*(\d+)/)
+                            match = text.match(/\|\s*Gradi\sgiorno\s*=\s*(\d+)/i)
                         if match[1] != gradigiorno
                             c += 1
                             f.write("#{title},#{match[1]},#{gradigiorno}\n")
                             if active
-                                text.gsub!(/\|\s*Gradi\sgiorno\s*=\s*[\d,]+/, "|Gradi giorno = #{gradigiorno}")
-                                wikipedia.edit(title: title, text: text, summary: "Correzione del dato dei gradi giorno", bot: true)
+                                text.gsub!(/\|\s*Gradi\sgiorno\s*=\s*[\d,]+\n*/i, "|Gradi giorno = #{gradigiorno}\n")
+                                wikipedia.edit(title: title, text: text, summary: "Correzione dei gradi giorno (vedi [[Discussioni progetto:Amministrazioni/Comuni italiani#Monitoraggio dei gradi giorno]])", bot: true)
                                 puts "Pagina #{title} aggiornata con successo"
                             end
                         end
@@ -92,11 +92,11 @@ begin
                         puts "#{row[4].strip} trovato #{title} e non matchabile (#{row[2]})"
                         m.write("#{title},#{row[2]}\n")
                         n += 1
-                        if text.match?(/\|\s*Gradi\sgiorno\s*=\s*/)
+                        if text.match?(/^\|\s*Gradi\sgiorno\s*=\s*$/im)
                             if active
                                 gradigiorno = row[2]
-                                text.gsub!(/\|\s*Gradi\sgiorno\s*=\s*/, "|Gradi giorno = #{gradigiorno}")
-                                wikipedia.edit(title: title, text: text, summary: "Aggiunta del dato dei gradi giorno", bot: true)
+                                text.gsub!(/\|\s*Gradi\sgiorno\s*=\s*\n*/i, "|Gradi giorno = #{gradigiorno}\n")
+                                wikipedia.edit(title: title, text: text, summary: "Aggiunta dei gradi giorno (vedi [[Discussioni progetto:Amministrazioni/Comuni italiani#Monitoraggio dei gradi giorno]])", bot: true)
                                 puts "Pagina #{title} aggiornata con successo"
                             end
                         end
