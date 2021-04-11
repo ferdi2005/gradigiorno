@@ -34,7 +34,7 @@ n = 0
 # row[4] contiene il nome del comune
 # row[2] contiene i gradi giorno.
 unless File.exist? "#{__dir__}/lista.txt"
-    url = "https://petscan.wmflabs.org/?format=json&doit=&categories=Comuni%20d%27Italia&depth=8&project=wikipedia&lang=it&templates_yes=divisione%20amministrativa"
+    url = "https://petscan.wmflabs.org/?format=json&doit=&categories=Comuni%20d%27Italia&negcats=Comuni%20d%27Italia%20soppressi&depth=8&project=wikipedia&lang=it&templates_yes=divisione%20amministrativa"
     petscan = HTTParty.get(url, timeout: 1000).to_h["*"][0]["a"]["*"]
     lista = File.open("#{__dir__}/lista.txt", "w")
     lista.write(petscan.to_json)
