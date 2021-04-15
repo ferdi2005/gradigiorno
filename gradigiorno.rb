@@ -14,7 +14,7 @@ unless File.exist? "#{__dir__}/.config"
     print '> '
     active = gets.chomp
     File.open("#{__dir__}/.config", "w") do |file| 
-      file.puts usernamem
+      file.puts username
       file.puts password
       file.puts active
     end
@@ -34,7 +34,7 @@ n = 0
 # row[4] contiene il nome del comune
 # row[2] contiene i gradi giorno.
 unless File.exist? "#{__dir__}/lista.txt"
-    url = "https://petscan.wmflabs.org/?format=json&doit=&categories=Comuni%20d%27Italia&negcats=Comuni%20d%27Italia%20soppressi&depth=8&project=wikipedia&lang=it&templates_yes=divisione%20amministrativa"
+    url = "https://petscan.wmflabs.org/?format=json&doit=&categories=Comuni%20d%27Italia&negcats=Comuni%20d%27Italia%20soppressi%0AFrazioni%20comunali%20d%27Italia&depth=8&project=wikipedia&lang=it&templates_yes=divisione%20amministrativa"
     petscan = HTTParty.get(url, timeout: 1000).to_h["*"][0]["a"]["*"]
     lista = File.open("#{__dir__}/lista.txt", "w")
     lista.write(petscan.to_json)
@@ -48,9 +48,9 @@ begin
             tot += 1
             # stringaricerca = 'intitle:"' + row[4].strip + '" comune italiano'
             # search = wikipedia.query(list: "search", srsearch: stringaricerca, srlimit: 1)
-            if petscan.find { |e| e["title"].include?(row[4].strip.gsub(" ", "_"))} != nil || petscan.find { |e| e["title"].include?(row[4].strip.gsub(" ", "_").gsub("-", "_"))} != nil ||  petscan.find { |e| e["title"].include?(row[4].strip.gsub(" ", "_").gsub("_", "-"))} != nil || petscan.find { |e| e["title"].include?(row[4].strip.gsub("è","é").gsub(" ", "_"))} != nil || petscan.find { |e| e["title"].include?(row[4].strip.gsub("é","è").gsub(" ", "_"))} != nil 
+            if petscan.find { |e| e["title"] == row[4].strip.gsub(" ", "_")} != nil || petscan.find { |e| e["title"] == row[4].strip.gsub(" ", "_").gsub("-", "_")} != nil ||  petscan.find { |e| e["title"].include?(row[4].strip.gsub(" ", "_").gsub("_", "-"))} != nil || petscan.find { |e| e["title"].include?(row[4].strip.gsub("è","é").gsub(" ", "_"))} != nil || petscan.find { |e| e["title"].include?(row[4].strip.gsub("é","è").gsub(" ", "_"))} != nil 
                 # title = search.data["search"][0]["title"]
-                if petscan.select { |e| e["title"].include?(row[4].strip.gsub(" ", "_"))}.count > 1
+                if petscan.select { |e| e["title"] == row[4].strip.gsub(" ", "_")}.count > 1
                     if petscan.find { |e| e["title"] == row[4].strip.gsub(" ", "_")} != nil
                         title = petscan.find { |e| e["title"] == row[4].strip.gsub(" ", "_")}["title"]
                     elsif petscan.find { |e| e["title"] == "#{row[4].strip} (Italia)".gsub(" ", "_")} != nil
@@ -62,16 +62,16 @@ begin
                     end
                 elsif petscan.find { |e| e["title"] == "#{row[4].strip} (Italia)".gsub(" ", "_")} != nil
                     title = petscan.find { |e| e["title"] == "#{row[4].strip} (Italia)".gsub(" ", "_")}["title"]
-                elsif petscan.find { |e| e["title"].include?(row[4].strip.gsub("è","é").gsub(" ", "_"))} != nil 
-                    title = petscan.find { |e| e["title"].include?(row[4].strip.gsub("è","é").gsub(" ", "_"))}["title"]
-                elsif petscan.find { |e| e["title"].include?(row[4].strip.gsub("é","è").gsub(" ", "_"))} != nil 
-                    title = petscan.find { |e| e["title"].include?(row[4].strip.gsub("é","è").gsub(" ", "_"))}["title"]
-                elsif petscan.find { |e| e["title"].include?(row[4].strip.gsub(" ", "_"))} != nil
-                    title = petscan.find { |e| e["title"].include?(row[4].strip.gsub(" ", "_"))}["title"]
-                elsif petscan.find { |e| e["title"].include?(row[4].strip.gsub(" ", "_").gsub("-", "_"))} != nil
-                    title = petscan.find { |e| e["title"].include?(row[4].strip.gsub(" ", "_").gsub("-", "_"))}["title"]
-                elsif petscan.find { |e| e["title"].include?(row[4].strip.gsub(" ", "_").gsub("_", "-"))} != nil
-                    title = petscan.find { |e| e["title"].include?(row[4].strip.gsub(" ", "_").gsub("_", "-"))}["title"]
+                elsif petscan.find { |e| e["title"] == row[4].strip.gsub("è","é").gsub(" ", "_")} != nil 
+                    title = petscan.find { |e| e["title"] == row[4].strip.gsub("è","é").gsub(" ", "_")}["title"]
+                elsif petscan.find { |e| e["title"] == row[4].strip.gsub("é","è").gsub(" ", "_")} != nil 
+                    title = petscan.find { |e| e["title"] == row[4].strip.gsub("é","è").gsub(" ", "_")}["title"]
+                elsif petscan.find { |e| e["title"] == row[4].strip.gsub(" ", "_")} != nil
+                    title = petscan.find { |e| e["title"] == row[4].strip.gsub(" ", "_")}["title"]
+                elsif petscan.find { |e| e["title"] == row[4].strip.gsub(" ", "_").gsub("-", "_")} != nil
+                    title = petscan.find { |e| e["title"] == row[4].strip.gsub(" ", "_").gsub("-", "_")}["title"]
+                elsif petscan.find { |e| e["title"] == row[4].strip.gsub(" ", "_").gsub("_", "-")} != nil
+                    title = petscan.find { |e| e["title"] == row[4].strip.gsub(" ", "_").gsub("_", "-")}["title"]
                 end
                 wikitext = wikipedia.query prop: :revisions, titles: title, rvprop: :content, rvslots: "*"
                 begin
@@ -112,7 +112,7 @@ begin
             end
         end
     end
-rescue Interrupt => e 
+rescue 
     puts "Salvo..."
     f.close
     m.close
