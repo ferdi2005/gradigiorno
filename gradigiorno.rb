@@ -117,11 +117,11 @@ begin
         end
         bar.increment!
     end
-rescue 
+rescue => e
     puts "Salvo..."
     f.close
     m.close
-    puts "Elaborati #{tot} comuni di cui #{c} con discrepanze. Ci sono #{n} errori."
+    puts "#{e}: Elaborati #{tot} comuni di cui #{c} con discrepanze. Ci sono #{n} errori."
 end
 f.close
 m.close
