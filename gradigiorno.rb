@@ -2,6 +2,8 @@ require 'mediawiki_api'
 require 'roo'
 require 'httparty'
 require 'json'
+require 'csv'
+require 'progress_bar'
 
 unless File.exist? "#{__dir__}/.config"
     puts 'Inserisci username:'
@@ -26,7 +28,7 @@ wikipedia.log_in(userdata[0].strip, userdata[1].strip)
 active = userdata[2].strip == "y" ? true : false
 f = File.open("comuni.csv", "w")
 m = File.open("mancanti.csv", "w")
-csv = Roo::Spreadsheet.open("tabella.csv")
+csv = CSV.read("tabella.csv", headers: true, col_sep: ",", skip_blanks: true)
 c = 0
 tot = 0
 n = 0
@@ -43,6 +45,8 @@ end
 petscan = JSON.parse(File.read("#{__dir__}/lista.txt"))
 puts 'Inizio a processare le pagine...'
 begin
+    bar = ProgressBar.new(zone.count)
+
     csv.each do |row|
         if !row[0].nil? && row[0] != "" && row[0] != "pr"
             tot += 1
@@ -111,6 +115,7 @@ begin
                 n += 1
             end
         end
+        bar.increment!
     end
 rescue 
     puts "Salvo..."
