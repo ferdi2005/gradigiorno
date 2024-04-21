@@ -77,62 +77,62 @@ begin
         # È adattato alla lista che è tutta in maiuscolo
 
         provincia = province.find { |p| p["sigla"] == row[0] }
-        if petscan.select { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_"))}.count == 1
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_"))}
+        if petscan.select { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_"))}.count == 1
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_"))}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (ITALIA)".gsub(" ", "_")} != nil
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (ITALIA)".gsub(" ", "_")}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (ITALIA)".gsub(" ", "_")} != nil
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (ITALIA)".gsub(" ", "_")}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (COMUNE)".gsub(" ", "_")} != nil
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (COMUNE)".gsub(" ", "_")}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (COMUNE)".gsub(" ", "_")} != nil
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (COMUNE)".gsub(" ", "_")}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (COMUNE ITALIANO)".gsub(" ", "_")} != nil
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (COMUNE ITALIANO)".gsub(" ", "_")}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (COMUNE ITALIANO)".gsub(" ", "_")} != nil
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (COMUNE ITALIANO)".gsub(" ", "_")}
             title = page["title"]
             item = page["q"]
         # verifica la regione come disambiguante
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (#{provincia["regione"].upcase})".gsub(" ", "_")} != nil
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (#{provincia["regione"].upcase})".gsub(" ", "_")}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (#{provincia["regione"].upcase})".gsub(" ", "_")} != nil
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (#{provincia["regione"].upcase})".gsub(" ", "_")}
             title = page["title"]
             item = page["q"]
         # verifica la provincia come disambiguante
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (#{provincia["nome"]})".gsub(" ", "_").upcase} != nil
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (#{provincia["nome"]})".gsub(" ", "_").upcase}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (#{provincia["nome"]})".gsub(" ", "_").upcase} != nil
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == "#{comune} (#{provincia["nome"]})".gsub(" ", "_").upcase}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("È","É").gsub(" ", "_"))} != nil 
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join  == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("È","É").gsub(" ", "_"))}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("È","É").gsub(" ", "_"))} != nil 
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join  == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("È","É").gsub(" ", "_"))}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("É","È").gsub(" ", "_"))} != nil 
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("É","È").gsub(" ", "_"))}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("É","È").gsub(" ", "_"))} != nil 
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("É","È").gsub(" ", "_"))}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_"))} != nil
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_"))}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_"))} != nil
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_"))}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_").gsub("-", "_"))} != nil
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_").gsub("-", "_"))}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_").gsub("-", "_"))} != nil
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_").gsub("-", "_"))}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_").gsub("_", "-"))} != nil
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_").gsub("_", "-"))}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_").gsub("_", "-"))} != nil
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" ", "_").gsub("_", "-"))}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" - ", "-").gsub(" ", "_"))} != nil
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" - ", "-").gsub(" ", "_"))}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" - ", "-").gsub(" ", "_"))} != nil
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub(" - ", "-").gsub(" ", "_"))}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("-", " - ").gsub(" ", "_"))} != nil
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("-", " - ").gsub(" ", "_"))}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("-", " - ").gsub(" ", "_"))} != nil
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("-", " - ").gsub(" ", "_"))}
             title = page["title"]
             item = page["q"]
-        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("d'","di ").gsub(" ", "_"))} != nil 
-            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i != e["title"].upcase[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("d'","di ").gsub(" ", "_"))}
+        elsif petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("d'","di ").gsub(" ", "_"))} != nil 
+            page = petscan.find { |e| e["title"].upcase.chars.map { |i| if i !=  e["title"].upcase.split("_(")[0][-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join == (comune.upcase.chars.map { |i| if i != comune[-1] then i.tr("ÀÈÌÒÙÁÉÍÓÚ", "AEIOUAEIOU") else i end }.join.gsub("d'","di ").gsub(" ", "_"))}
             title = page["title"]
             item = page["q"]
         else
